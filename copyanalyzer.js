@@ -1,4 +1,4 @@
-<script >
+<script>
     $(document).ready(function() {
         // added by Anna as the compiler threw an error
         if (!Element.prototype.matches) {
@@ -72,7 +72,9 @@
 
                 $(".rt").text(reading_time);
                 $(".ls").text(longest_sentence[0].split('","', 1));
+                
                 //console.log(longest_word[0]);
+                
                 $(".lw").text(longest_word[0].split('","', 1));
                 $(".fre").text(flesch_reading_ease);
 
@@ -82,6 +84,7 @@
                 } else {
                     $('.fre').css('color', '#27CC8D');
                 }
+                
                 switch (true) {
                     case flesch_reading_ease < 31:
                         $('.fre').text('Very Difficult');
@@ -107,10 +110,11 @@
 
                 $(".agl").text(average_grade_level);
                 $(".tne").text(tone);
+
+                //needs to replace these id with custom classes later
                 $('#lp-pom-box-19').css('visibility', 'visible');
                 $('#lp-pom-box-31').css('visibility', 'hidden');
                 $('#lp-pom-box-228').css('background-image', 'url(https://res.cloudinary.com/unbounce/image/url2png/' + myurl + ')');
-
 
                 $.ajax({
                     url: 'https://api.readable.com/api/highlight/',
@@ -141,14 +145,16 @@
                         $(".highlight_bad").attr("data-message", very_long_sentence);
                         $(".highlight_hard_word").attr("data-message", hard_word);
                         $(".highlight_long_word").attr("data-message", long_word);
+                        
                         var vlelts = document.querySelectorAll('.highlight_bad');
                         //console.log(vlelts);
-                        var lelts = document.querySelectorAll('.highlight_warn:not(.highlight_bad)');
-                        //console.log(lelts);
                         $(".vlong").html("");
-                        //	$(".long").html("");
+          
+                        //var lelts = document.querySelectorAll('.highlight_warn:not(.highlight_bad)');
+                        //console.log(lelts);
+                        //$(".long").html("");
 
-                        for (var i = 0; i < vlelts.length; ++i) { //vlelts.
+                        for (var i = 0; i < vlelts.length; ++i) { 
 
                             $(".vlong").append(vlelts[i].innerHTML + "<br><br>");
                             $(".highlight_spelling").tooltip({
@@ -179,7 +185,7 @@
                                 }
                             });
                             if (i == 4) {
-                                //exit the loop on the 5th iteration of the object.
+                            //exit the loop on the 5th iteration of the object.
                                 return false;
                             }
 
